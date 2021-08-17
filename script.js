@@ -3,17 +3,19 @@ var generateBtn = document.querySelector("#generate");
 
 
 function generatePassword() {
+    // Creating object for character pool
+    var charPool = {
+        lower: "abcdefghijklmnopqrstuvwxyz", 
+        upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 
+        sym: " !#$%&'\"()*+,-./:;<=>?@[\\]^_`{|}~", 
+        num: "0123456789"};
+        
     // Creating strings to create the password  
     var lowercase = "abcdefghijklmnopqrstuvwxyz";
     var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var symbols = " !#$%&'\"()*+,-./:;<=>?@[\\]^_`{|}~";
     var numbers = "0123456789";
-    var charPool {
-        lower: "abcdefghijklmnopqrstuvwxyz",
-        upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        sym: " !#$%&'\"()*+,-./:;<=>?@[\\]^_`{|}~",
-        num: "0123456789"
-    }
+    
     var length = 0;
     var characters = "";
     var pwGenOut = "";
