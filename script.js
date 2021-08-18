@@ -6,9 +6,9 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword() {
     // Creating object for character pool
     var charPool = {
-        lower: "abcdefghijklmnopqrstuvwxyz", 
-        upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 
-        sym: " !#$%&'\"()*+,-./:;<=>?@[\\]^_`{|}~", 
+        lower: "abcdefghijklmnopqrstuvwxyz",
+        upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        sym: " !#$%&'\"()*+,-./:;<=>?@[\\]^_`{|}~",
         num: "0123456789"
     };
 
@@ -17,7 +17,7 @@ function generatePassword() {
     var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var symbols = " !#$%&'\"()*+,-./:;<=>?@[\\]^_`{|}~";
     var numbers = "0123456789";
-    
+
     var length = 0;
     var characters = "";
     var pwGenOut = "";
@@ -28,58 +28,59 @@ function generatePassword() {
     // Do while loop to run the confirmation for character pool, will loop if all selections are not selected
     // WHEN I answer each prompt
     // THEN my input should be validated and at least one character type should be selected
-    do{
+    do {
         // prompts asking for each character user wants and adds the corresponding selection criteria to character pool
-        
+
         var hasLower = window.confirm("Do you want lowercase characters?");
         if (hasLower) {
             // adding lowercase selection criteria to characters pool 
-            characters += lowercase;
+            // characters += lowercase; 
+            characters += charPool.lower;
         };
         var hasUpper = window.confirm("Do you want uppercase characters?");
         if (hasUpper) {
             // adding uppercase selection criteria to characters pool 
-            characters += uppercase;
+            // characters += uppercase;
+            characters += charPool.upper;
         };
         var hasSymbols = window.confirm("Do you want symbol characters?");
         if (hasSymbols) {
             // adding symbols selection criteria to characters pool 
-            characters += symbols;
+            // characters += symbols;
+            characters += charPool.sym;
         };
         var hasNum = window.confirm("Do you want number characters?");
         if (hasNum) {
             // adding numbers selection criteria to characters pool 
-            characters += numbers;
+            // characters += numbers;
+            characters += charPool.num;
         };
         // Checking to see if all selections were false
-        if (!hasLower && !hasUpper && !hasSymbols && !hasNum){
-            alert("You need to select at least one character option!")  // Alerting user to select at least one option
+        if (!hasLower && !hasUpper && !hasSymbols && !hasNum) {
+            alert("You need to select at least one character option!") // Alerting user to select at least one option
         }
-    } while(!hasLower && !hasUpper && !hasSymbols && !hasNum); // Do while loop to run the confirmation for character pool, will loop if all selections are not selected
-    
-    
-    
+    } while (!hasLower && !hasUpper && !hasSymbols && !hasNum); // Do while loop to run the confirmation for character pool, will loop if all selections are not selected
+
+
+
     // WHEN prompted for the length of the password
     // THEN I choose a length of at least 8 characters and no more than 128 characters
 
     // prompt asking how long the password length will be
-    var userInLength = window.prompt("How many characters would you like?");
-    // removing typeof(userInLength) !== 'number' || to check to see if that was causing while loop to run forever
-    // while (userInLength < 8 || userInLength > 128) {
-    //     window.alert("Password is minimum length of 8 and maximum of 128 characters. Please input how many characters");
-    // }
-    // //-----------------------------------------------------------------------------------------------------------------------------------
-    //maybe i don't need the if else if i just use a while loop
-    //if (userInLength < 8) { // checking to see if minimum character is met 
-    //    window.alert("Minimum of 8 characters, please enter desired character length again");
-    //    userInLength = window.prompt("How many characters would you like?");
-    //} else if (userInLength > 128) { // checking to see if maximum charcter isn't exceeded
-    //    window.alert("Maximum of 128 characters, please enter desired character length again");
-    //    userInLength = window.prompt("How many characters would you like?");
-    //} else if (typeof(userInLength) !== 'number') { // checking to see user entered any non numbers 
-    //    window.alert("Please enter in a number!");
-    //    userInLength = window.prompt("How many characters would you like?");}
-    //-----------------------------------------------------------------------------------------------------------------------------------
+    do {
+        var userInLength = window.prompt("How many characters would you like?");
+        // creating expression to see if userInLength is not a number
+        var checkIfNum = isNaN(userInLength);
+        if (checkIfNum) {
+            // alerts user if userInLength is not a number
+            alert("You must enter in a number!");
+        };
+        if (userInLength < 8 || userInLength > 128) {
+            // alerts uers if entry is not between 8 and 128
+            alert("You must enter in a number between 8 and 128!");
+        }
+    } while (checkIfNum || userInLength < 8 || userInLength > 128);
+    // Do while loop to run the validation for user input, validation checks to see if non number entered and if number is between 8-128
 
     // assigning length to the user input 
     length = userInLength;
@@ -90,10 +91,9 @@ function generatePassword() {
         //generates random number to select character from character pool
         pwGenOut += characters[Math.floor(Math.random() * characters.length)]
     }
+
     return pwGenOut;
 
-    password = pwGenOut;
-    //alert("Password: " + password);
 }
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
@@ -103,7 +103,7 @@ function writePassword() {
     var passwordText = document.querySelector("#password");
 
     passwordText.value = password;
-    
+
 }
 
 // Add event listener to generate button
