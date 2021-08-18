@@ -5,29 +5,49 @@ var generateBtn = document.querySelector("#generate");
 // THEN I am presented with a series of prompts for password criteria
 function generatePassword() {
     // Creating object for character pool
-    var charPool = {
+    const charPool = {
         lower: "abcdefghijklmnopqrstuvwxyz",
         upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         sym: " !#$%&'\"()*+,-./:;<=>?@[\\]^_`{|}~",
         num: "0123456789"
     };
 
-    // Creating strings to create the password  
-    var lowercase = "abcdefghijklmnopqrstuvwxyz";
-    var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var symbols = " !#$%&'\"()*+,-./:;<=>?@[\\]^_`{|}~";
-    var numbers = "0123456789";
-
+    // Creating variables for length, characters, pwGenOut
+    // Length of password from 8-128 per requirements
     var length = 0;
+    // Characters to be used to generate password after user selects lower, upper, symbols, numbers 
     var characters = "";
+    // Stores the pw being generated in the generatePassword function
     var pwGenOut = "";
+
     // WHEN prompted for password criteria
-    // THEN I select which criteria to include in the password
+    // THEN I select which criteria to include in the 
+    // WHEN prompted for the length of the password
+    // THEN I choose a length of at least 8 characters and no more than 128 characters
+
+    // prompt asking how long the password length will be
+    // Do while loop to run the validation for user input, validation checks to see if non number entered and if number is between 8-128
+    do {
+        var userInLength = window.prompt("How many characters would you like? Minimum of 8 and Maximum of 28");
+        // creating expression to see if userInLength is not a number
+        var checkIfNum = isNaN(userInLength);
+        if (checkIfNum) {
+            // alerts user if userInLength is not a number
+            alert("You must enter in a number!");
+        };
+        if (userInLength < 8 || userInLength > 128) {
+            // alerts uers if entry is not between 8 and 128
+            alert("You must enter in a number between 8 and 128!");
+        }
+    } while (checkIfNum || userInLength < 8 || userInLength > 128);
+    // Do while loop to run the validation for user input, validation checks to see if non number entered and if number is between 8-128
+    
     // WHEN asked for character types to include in the password
     // THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-    // Do while loop to run the confirmation for character pool, will loop if all selections are not selected
+    
     // WHEN I answer each prompt
     // THEN my input should be validated and at least one character type should be selected
+    // Do while loop to run the confirmation for character pool, will loop if all selections are not selected
     do {
         // prompts asking for each character user wants and adds the corresponding selection criteria to character pool
 
@@ -61,26 +81,6 @@ function generatePassword() {
         }
     } while (!hasLower && !hasUpper && !hasSymbols && !hasNum); // Do while loop to run the confirmation for character pool, will loop if all selections are not selected
 
-
-
-    // WHEN prompted for the length of the password
-    // THEN I choose a length of at least 8 characters and no more than 128 characters
-
-    // prompt asking how long the password length will be
-    do {
-        var userInLength = window.prompt("How many characters would you like?");
-        // creating expression to see if userInLength is not a number
-        var checkIfNum = isNaN(userInLength);
-        if (checkIfNum) {
-            // alerts user if userInLength is not a number
-            alert("You must enter in a number!");
-        };
-        if (userInLength < 8 || userInLength > 128) {
-            // alerts uers if entry is not between 8 and 128
-            alert("You must enter in a number between 8 and 128!");
-        }
-    } while (checkIfNum || userInLength < 8 || userInLength > 128);
-    // Do while loop to run the validation for user input, validation checks to see if non number entered and if number is between 8-128
 
     // assigning length to the user input 
     length = userInLength;
