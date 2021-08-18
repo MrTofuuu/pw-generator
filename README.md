@@ -2,6 +2,8 @@
 
 Welcome to my Password generator!
 
+A password generator that will create a pw using password criteria you select.
+
 
 
 ## Description
@@ -46,20 +48,9 @@ Chris Stallcup
 
 ## Badges
 
-[![GitHub open issues](https://img.shields.io/github/issues/MrTofuuu/pw-generator?style=for-the-badge)](https://github.com/MrTofuuu/portfolio/issues)
-[![GitHub closed issues](https://img.shields.io/github/issues-closed/MrTofuuu/pw-generator?style=for-the-badge)](https://img.shields.io/github/issues-closed/MrTofuuu/portfolio?style=for-the-badge)
-[![GitHub stars](https://img.shields.io/github/stars/MrTofuuu/pw-generator?style=for-the-badge)](https://github.com/MrTofuuu/portfolio/stargazers)
+[![GitHub open issues](https://img.shields.io/github/issues/MrTofuuu/pw-generator?style=for-the-badge)](https://github.com/MrTofuuu/pw-generator/issues)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/MrTofuuu/pw-generator?style=for-the-badge)](https://img.shields.io/github/issues-closed/MrTofuuu/pw-generator?style=for-the-badge)
+[![GitHub stars](https://img.shields.io/github/stars/MrTofuuu/pw-generator?style=for-the-badge)](https://github.com/MrTofuuu/pw-generator/stargazers)
 
-
-
-
-
-
-
-
-
-
-# pw-generator
-A password generator that will create a pw using password criteria you select.
 
 
