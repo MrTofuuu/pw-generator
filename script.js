@@ -41,10 +41,10 @@ function generatePassword() {
         }
     } while (checkIfNum || userInLength < 8 || userInLength > 128);
     // Do while loop to run the validation for user input, validation checks to see if non number entered and if number is between 8-128
-    
+
     // WHEN asked for character types to include in the password
     // THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-    
+
     // WHEN I answer each prompt
     // THEN my input should be validated and at least one character type should be selected
     // Do while loop to run the confirmation for character pool, will loop if all selections are not selected
@@ -92,6 +92,7 @@ function generatePassword() {
         pwGenOut += characters[Math.floor(Math.random() * characters.length)]
     }
 
+    //outputs the generated pw for us by anything that calls the generatePassword function
     return pwGenOut;
 
 }
