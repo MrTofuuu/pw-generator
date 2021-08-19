@@ -92,6 +92,10 @@ function generatePassword() {
         pwGenOut += characters[Math.floor(Math.random() * characters.length)]
     }
 
+    // add function to auto add the four criteria, guaranteeing each selection criteria prior to full generation
+    // length - selected criteria will be the final length due to guaranteed items being included
+    // shuffling final result 
+
     //outputs the generated pw for us by anything that calls the generatePassword function
     return pwGenOut;
 
