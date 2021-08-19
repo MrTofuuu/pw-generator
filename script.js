@@ -28,7 +28,7 @@ function generatePassword() {
     // prompt asking how long the password length will be
     // Do while loop to run the validation for user input, validation checks to see if non number entered and if number is between 8-128
     do {
-        var userInLength = window.prompt("How many characters would you like? Minimum of 8 and Maximum of 28");
+        var userInLength = window.prompt("How many characters would you like? Minimum of 8 and Maximum of 128");
         // creating expression to see if userInLength is not a number
         var checkIfNum = isNaN(userInLength);
         if (checkIfNum) {
