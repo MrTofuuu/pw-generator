@@ -1,9 +1,21 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
+// Shuffle Fucntion 
+
 // WHEN I click the button to generate a password
 // THEN I am presented with a series of prompts for password criteria
 function generatePassword() {
+    function shufflePW(pwGenOut) {
+        var arr = pwGenOut.split(''); // Convert String to array
+
+        arr.sort(function() {
+            return 0.5 - Math.random();
+        });
+        pwGenOut = arr.join(''); // Convert Array to string
+        return pwGenOut; // Return shuffled string
+    }
     // Creating object for character pool
     const charPool = {
         lower: "abcdefghijklmnopqrstuvwxyz",
@@ -17,6 +29,8 @@ function generatePassword() {
     var length = 0;
     // Characters to be used to generate password after user selects lower, upper, symbols, numbers 
     var characters = "";
+    // putting a number to selected crieria used
+    var criteria = 0;
     // Stores the pw being generated in the generatePassword function
     var pwGenOut = "";
 
@@ -54,26 +68,42 @@ function generatePassword() {
         var hasLower = window.confirm("Do you want lowercase characters?");
         if (hasLower) {
             // adding lowercase selection criteria to characters pool 
-            // characters += lowercase; 
             characters += charPool.lower;
+            // forcing an add if crieteria is selected
+            pwGenOut += charPool.lower[Math.floor(Math.random() * charPool.lower.length)];
+            criteria++;
+            console.log("pw so far: " + pwGenOut);
+            console.log("amount of selected criteria: " + criteria);
         };
         var hasUpper = window.confirm("Do you want uppercase characters?");
         if (hasUpper) {
             // adding uppercase selection criteria to characters pool 
-            // characters += uppercase;
             characters += charPool.upper;
+            // forcing an add if crieteria is selected
+            pwGenOut += charPool.upper[Math.floor(Math.random() * charPool.upper.length)];
+            criteria++;
+            console.log("pw so far: " + pwGenOut);
+            console.log("amount of selected criteria: " + criteria);
         };
         var hasSymbols = window.confirm("Do you want symbol characters?");
         if (hasSymbols) {
             // adding symbols selection criteria to characters pool 
-            // characters += symbols;
             characters += charPool.sym;
+            // forcing an add if crieteria is selected
+            pwGenOut += charPool.sym[Math.floor(Math.random() * charPool.sym.length)];
+            criteria++;
+            console.log("pw so far: " + pwGenOut);
+            console.log("amount of selected criteria: " + criteria);
         };
         var hasNum = window.confirm("Do you want number characters?");
         if (hasNum) {
             // adding numbers selection criteria to characters pool 
-            // characters += numbers;
             characters += charPool.num;
+            // forcing an add if crieteria is selected
+            pwGenOut += charPool.num[Math.floor(Math.random() * charPool.num.length)];
+            criteria++;
+            console.log("pw so far: " + pwGenOut);
+            console.log("amount of selected criteria: " + criteria);
         };
         // Checking to see if all selections were false
         if (!hasLower && !hasUpper && !hasSymbols && !hasNum) {
@@ -83,7 +113,8 @@ function generatePassword() {
 
 
     // assigning length to the user input 
-    length = userInLength;
+    // length - selected criteria will be the final length due to guaranteed items being included
+    length = userInLength - criteria;
     // WHEN all prompts are answered
     // THEN a password is generated that matches the selected criteria
     // For loop to create the password based on the selection criteria
@@ -91,10 +122,11 @@ function generatePassword() {
         //generates random number to select character from character pool
         pwGenOut += characters[Math.floor(Math.random() * characters.length)]
     }
-
-    // add function to auto add the four criteria, guaranteeing each selection criteria prior to full generation
-    // length - selected criteria will be the final length due to guaranteed items being included
     // shuffling final result 
+    console.log("PW before shuffle: \n" + pwGenOut);
+    pwGenOut = shufflePW(pwGenOut);
+    console.log("PW after shuffle: \n" + pwGenOut);
+
 
     //outputs the generated pw for us by anything that calls the generatePassword function
     return pwGenOut;
