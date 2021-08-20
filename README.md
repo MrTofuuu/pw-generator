@@ -46,6 +46,8 @@ Chris Stallcup
 
 * [https://www.w3schools.com/js/js_strings.asp](https://www.w3schools.com/js/js_strings.asp)
 
+* [https://www.codespeedy.com/shuffle-characters-of-a-string-in-javascript/](https://www.codespeedy.com/shuffle-characters-of-a-string-in-javascript/)
+
 ## Badges
 
 [![GitHub open issues](https://img.shields.io/github/issues/MrTofuuu/pw-generator?style=for-the-badge)](https://github.com/MrTofuuu/pw-generator/issues)
