@@ -17,6 +17,8 @@ function generatePassword() {
     var length = 0;
     // Characters to be used to generate password after user selects lower, upper, symbols, numbers 
     var characters = "";
+    // putting a number to selected crieria used
+    var criteria = 0;
     // Stores the pw being generated in the generatePassword function
     var pwGenOut = "";
 
@@ -54,26 +56,42 @@ function generatePassword() {
         var hasLower = window.confirm("Do you want lowercase characters?");
         if (hasLower) {
             // adding lowercase selection criteria to characters pool 
-            // characters += lowercase; 
             characters += charPool.lower;
+            // forcing an add if crieteria is selected
+            pwGenOut += charPool.lower[Math.floor(Math.random() * charPool.lower.length)];
+            criteria++;
+            console.log("pw so far: " + pwGenOut);
+            console.log("amount of selected criteria: " + criteria);
         };
         var hasUpper = window.confirm("Do you want uppercase characters?");
         if (hasUpper) {
             // adding uppercase selection criteria to characters pool 
-            // characters += uppercase;
             characters += charPool.upper;
+            // forcing an add if crieteria is selected
+            pwGenOut += charPool.upper[Math.floor(Math.random() * charPool.upper.length)];
+            criteria++;
+            console.log("pw so far: " + pwGenOut);
+            console.log("amount of selected criteria: " + criteria);
         };
         var hasSymbols = window.confirm("Do you want symbol characters?");
         if (hasSymbols) {
             // adding symbols selection criteria to characters pool 
-            // characters += symbols;
             characters += charPool.sym;
+            // forcing an add if crieteria is selected
+            pwGenOut += charPool.sym[Math.floor(Math.random() * charPool.sym.length)];
+            criteria++;
+            console.log("pw so far: " + pwGenOut);
+            console.log("amount of selected criteria: " + criteria);
         };
         var hasNum = window.confirm("Do you want number characters?");
         if (hasNum) {
             // adding numbers selection criteria to characters pool 
-            // characters += numbers;
             characters += charPool.num;
+            // forcing an add if crieteria is selected
+            pwGenOut += charPool.num[Math.floor(Math.random() * charPool.num.length)];
+            criteria++;
+            console.log("pw so far: " + pwGenOut);
+            console.log("amount of selected criteria: " + criteria);
         };
         // Checking to see if all selections were false
         if (!hasLower && !hasUpper && !hasSymbols && !hasNum) {
