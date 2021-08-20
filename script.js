@@ -1,9 +1,21 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
+// Shuffle Fucntion 
+
 // WHEN I click the button to generate a password
 // THEN I am presented with a series of prompts for password criteria
 function generatePassword() {
+    function shufflePW(pwGenOut) {
+        var arr = pwGenOut.split(''); // Convert String to array
+
+        arr.sort(function() {
+            return 0.5 - Math.random();
+        });
+        pwGenOut = arr.join(''); // Convert Array to string
+        return pwGenOut; // Return shuffled string
+    }
     // Creating object for character pool
     const charPool = {
         lower: "abcdefghijklmnopqrstuvwxyz",
@@ -101,7 +113,8 @@ function generatePassword() {
 
 
     // assigning length to the user input 
-    length = userInLength;
+    // length - selected criteria will be the final length due to guaranteed items being included
+    length = userInLength - criteria;
     // WHEN all prompts are answered
     // THEN a password is generated that matches the selected criteria
     // For loop to create the password based on the selection criteria
@@ -109,10 +122,11 @@ function generatePassword() {
         //generates random number to select character from character pool
         pwGenOut += characters[Math.floor(Math.random() * characters.length)]
     }
-
-    // add function to auto add the four criteria, guaranteeing each selection criteria prior to full generation
-    // length - selected criteria will be the final length due to guaranteed items being included
     // shuffling final result 
+    console.log("PW before shuffle: \n" + pwGenOut);
+    pwGenOut = shufflePW(pwGenOut);
+    console.log("PW after shuffle: \n" + pwGenOut);
+
 
     //outputs the generated pw for us by anything that calls the generatePassword function
     return pwGenOut;
