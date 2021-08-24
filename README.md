@@ -22,8 +22,8 @@ Created a Javascript pw generator with validation and options to use lower case,
 
 ## Screenshots
 
-![Password Generator Home](home.png)
-![Password Generator Generated](generated.png)
+![Password Generator Home](./assets/home.png)
+![Password Generator Generated](./assets/generated.png)
 
 ### **Links**
 
