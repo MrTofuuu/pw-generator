@@ -1,21 +1,27 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 
 // Shuffle Fucntion 
+function shufflePW(pwGenOut) {
+    let arr = pwGenOut.split(''); // Convert String to array
+
+    arr.sort(function() {
+        return 0.5 - Math.random();
+    });
+    pwGenOut = arr.join(''); // Convert Array to string
+    return pwGenOut; // Return shuffled string
+}
+
+// Randomizer
+function randomizer(char){
+    return Math.floor(Math.random() * char.length);
+}
 
 // WHEN I click the button to generate a password
 // THEN I am presented with a series of prompts for password criteria
 function generatePassword() {
-    function shufflePW(pwGenOut) {
-        var arr = pwGenOut.split(''); // Convert String to array
-
-        arr.sort(function() {
-            return 0.5 - Math.random();
-        });
-        pwGenOut = arr.join(''); // Convert Array to string
-        return pwGenOut; // Return shuffled string
-    }
+    
     // Creating object for character pool
     const charPool = {
         lower: "abcdefghijklmnopqrstuvwxyz",
@@ -26,13 +32,13 @@ function generatePassword() {
 
     // Creating variables for length, characters, pwGenOut
     // Length of password from 8-128 per requirements
-    var length = 0;
+    let length = 0;
     // Characters to be used to generate password after user selects lower, upper, symbols, numbers 
-    var characters = "";
+    let characters = "";
     // putting a number to selected crieria used
-    var criteria = 0;
+    let criteria = 0;
     // Stores the pw being generated in the generatePassword function
-    var pwGenOut = "";
+    let pwGenOut = "";
 
     // WHEN prompted for password criteria
     // THEN I select which criteria to include in the 
@@ -42,9 +48,9 @@ function generatePassword() {
     // prompt asking how long the password length will be
     // Do while loop to run the validation for user input, validation checks to see if non number entered and if number is between 8-128
     do {
-        var userInLength = window.prompt("How many characters would you like? Minimum of 8 and Maximum of 128");
+        const userInLength = window.prompt("How many characters would you like? Minimum of 8 and Maximum of 128");
         // creating expression to see if userInLength is not a number
-        var checkIfNum = isNaN(userInLength);
+        const checkIfNum = isNaN(userInLength);
         if (checkIfNum) {
             // alerts user if userInLength is not a number
             alert("You must enter in a number!");
@@ -65,42 +71,42 @@ function generatePassword() {
     do {
         // prompts asking for each character user wants and adds the corresponding selection criteria to character pool
 
-        var hasLower = window.confirm("Do you want lowercase characters?");
+        const hasLower = window.confirm("Do you want lowercase characters?");
         if (hasLower) {
             // adding lowercase selection criteria to characters pool 
             characters += charPool.lower;
             // forcing an add if crieteria is selected
-            pwGenOut += charPool.lower[Math.floor(Math.random() * charPool.lower.length)];
+            pwGenOut += charPool.lower[randomizer(charPool.lower)];
             criteria++;
             console.log("pw so far: " + pwGenOut);
             console.log("amount of selected criteria: " + criteria);
         };
-        var hasUpper = window.confirm("Do you want uppercase characters?");
+        const hasUpper = window.confirm("Do you want uppercase characters?");
         if (hasUpper) {
             // adding uppercase selection criteria to characters pool 
             characters += charPool.upper;
             // forcing an add if crieteria is selected
-            pwGenOut += charPool.upper[Math.floor(Math.random() * charPool.upper.length)];
+            pwGenOut += charPool.upper[randomizer(charPool.upper)];
             criteria++;
             console.log("pw so far: " + pwGenOut);
             console.log("amount of selected criteria: " + criteria);
         };
-        var hasSymbols = window.confirm("Do you want symbol characters?");
+        const hasSymbols = window.confirm("Do you want symbol characters?");
         if (hasSymbols) {
             // adding symbols selection criteria to characters pool 
             characters += charPool.sym;
             // forcing an add if crieteria is selected
-            pwGenOut += charPool.sym[Math.floor(Math.random() * charPool.sym.length)];
+            pwGenOut += charPool.sym[randomizer(charPool.sym)];
             criteria++;
             console.log("pw so far: " + pwGenOut);
             console.log("amount of selected criteria: " + criteria);
         };
-        var hasNum = window.confirm("Do you want number characters?");
+        const hasNum = window.confirm("Do you want number characters?");
         if (hasNum) {
             // adding numbers selection criteria to characters pool 
             characters += charPool.num;
             // forcing an add if crieteria is selected
-            pwGenOut += charPool.num[Math.floor(Math.random() * charPool.num.length)];
+            pwGenOut += charPool.num[randomizer(charPool.num)];
             criteria++;
             console.log("pw so far: " + pwGenOut);
             console.log("amount of selected criteria: " + criteria);
@@ -118,7 +124,7 @@ function generatePassword() {
     // WHEN all prompts are answered
     // THEN a password is generated that matches the selected criteria
     // For loop to create the password based on the selection criteria
-    for (var i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         //generates random number to select character from character pool
         pwGenOut += characters[Math.floor(Math.random() * characters.length)]
     }
@@ -136,8 +142,8 @@ function generatePassword() {
 // THEN the password is either displayed in an alert or written to the page
 // Write password to the #password input
 function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
+    let password = generatePassword();
+    let passwordText = document.querySelector("#password");
 
     passwordText.value = password;
 
